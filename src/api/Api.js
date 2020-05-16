@@ -8,6 +8,20 @@ class Api {
         return this._fetch('/users');
     };
 
+    addUser = async name => {
+        this.requests.push(`POST /users`);
+        await delay(2000);
+        this.requests.push(`OK /users`);
+
+        return { name, id: Math.floor(Math.random() * 100) };
+    };
+
+    removeUser = async user => {
+        this.requests.push(`DELETE /users/${user.id}`);
+        await delay(2000);
+        this.requests.push(`OK /users/${user.id}`);
+    };
+
     async _fetch(url, options = {}) {
         const { delayMs } = options;
         const resource = url.replace(this.baseUrl, '');
@@ -38,7 +52,7 @@ class Api {
         return {
             ok: !!data,
             status: !!data ? 200 : 404,
-            json: () => data,
+            json: () => new Promise(r => r(data)),
         };
     }
 }

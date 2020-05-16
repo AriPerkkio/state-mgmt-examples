@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { colorWhite } from 'constants/style-variables';
+import { colorWhite, colorGrey } from 'constants/style-variables';
 
 const Button = styled.button`
     cursor: pointer;
@@ -20,6 +20,11 @@ const Button = styled.button`
 
     &:last-child {
         margin-right: 0;
+    }
+
+    &[disabled] {
+        text-decoration: line-through;
+        color: ${colorGrey};
     }
 `;
 

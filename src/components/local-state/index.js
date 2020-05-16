@@ -1,1 +1,1 @@
-export default () => 'Local state';
+export { default } from './UserList';

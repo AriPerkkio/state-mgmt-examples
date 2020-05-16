@@ -7,13 +7,7 @@ import { useForceRender } from 'hooks';
 
 const MAX_LIST_COUNT = 10;
 
-const ApiSubscribers = () => {
-    useForceRender(500);
-
-    return <h3>Api subscribers count: {Api.subscribers.length}</h3>;
-};
-
-const ApiRequests = () => {
+export default function ApiRequests() {
     useForceRender(500);
 
     const count = Api.requests.length;
@@ -34,7 +28,4 @@ const ApiRequests = () => {
             </List>
         </section>
     );
-};
-
-export default ApiSubscribers;
-export { ApiRequests };
+}
