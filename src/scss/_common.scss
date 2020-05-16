@@ -1,0 +1,92 @@
+.common {
+    &-label {
+        color: $color-white;
+        margin: 0 1rem;
+    }
+
+    &-input {
+        font-size: 1.3rem;
+        background-color: transparent;
+        color: $color-white;
+
+        &[type='checkbox'] {
+            margin-top: 0.5rem;
+        }
+    }
+
+    &-text {
+        color: $color-white;
+        font-size: 1.85rem;
+    }
+
+    &-button {
+        cursor: pointer;
+        color: $color-white;
+        background-color: rgba(20, 100, 150, 1);
+        border: 0;
+        outline: 0;
+        border-radius: 1rem;
+        padding: 0.5rem 1.5rem;
+        box-shadow: 0 0 1rem black;
+        margin: 2rem 1rem;
+
+        & + .common-button {
+            margin-left: 1.5rem;
+            margin-right: 1.5rem;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.toggled {
+            box-shadow: none;
+        }
+    }
+
+    &-flex-wrapper {
+        display: flex;
+
+        & > * + div {
+            margin-left: 5rem;
+        }
+    }
+}
+
+h1 {
+    font-size: 3rem;
+    color: $color-white;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: rgba($color-white, 0.8);
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+h3 {
+    font-size: 2rem;
+    color: rgba($color-white, 0.8);
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+div,
+li {
+    color: $color-white;
+    font-size: 1.85rem;
+}
+
+.quote {
+    white-space: pre-wrap;
+    max-width: 40rem;
+    min-width: 0;
+    border-top: 0.2rem dashed $color-white;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    color: $color-white;
+    font-size: 1.5rem;
+    font-style: italic;
+}

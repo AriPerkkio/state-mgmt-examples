@@ -1,0 +1,9 @@
+@import 'scss/mixins';
+@import 'scss/utilities';
+@import 'scss/variables';
+@import 'scss/base';
+
+#app-root {
+    @import 'components/common/CodeBlock/code-block';
+    @import 'components/common/Sidebar/sidebar';
+}

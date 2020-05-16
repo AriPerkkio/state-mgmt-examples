@@ -1,0 +1,21 @@
+$breakpoint-large: 75em;
+$breakpoint-medium: 50em;
+$breakpoint-small: 37.5em;
+
+@mixin screen-large {
+    @media (max-width: $breakpoint-large) {
+        @content;
+    }
+}
+
+@mixin screen-medium {
+    @media (max-width: $breakpoint-medium) {
+        @content;
+    }
+}
+
+@mixin screen-small {
+    @media (max-width: $breakpoint-small) {
+        @content;
+    }
+}

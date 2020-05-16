@@ -1,0 +1,19 @@
+{
+    "presets": [
+        ["@babel/preset-env", { "useBuiltIns": "entry", "corejs": 3 }],
+        "@babel/preset-react"
+    ],
+    "plugins": [
+        [
+            "@babel/plugin-transform-runtime",
+            { "corejs": false, "regenerator": true }
+        ],
+        "@babel/plugin-proposal-class-properties",
+        "babel-plugin-styled-components"
+    ],
+    "env": {
+        "development": {
+            "plugins": ["react-refresh/babel"]
+        }
+    }
+}
