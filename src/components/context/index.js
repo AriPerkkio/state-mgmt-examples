@@ -1,1 +1,1 @@
-export default () => 'Context';
+export { default } from './UsersWrapper';

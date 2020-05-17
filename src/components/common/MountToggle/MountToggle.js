@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 
 import Button from 'components/common/Button';
 
-const MountToggle = ({ initiallyMounted, children }) => {
+export default function MountToggle({ initiallyMounted, children }) {
     const [mounted, toggleMounted] = useReducer(s => !s, !!initiallyMounted);
 
     return (
@@ -14,6 +14,4 @@ const MountToggle = ({ initiallyMounted, children }) => {
             {mounted && children}
         </>
     );
-};
-
-export default MountToggle;
+}

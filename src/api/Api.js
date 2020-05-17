@@ -1,4 +1,4 @@
-import { delay } from 'utils';
+import { delay, uniqueId } from 'utils';
 import mockData from './mock-data';
 
 class Api {
@@ -13,7 +13,7 @@ class Api {
         await delay(2000);
         this.requests.push(`OK /users`);
 
-        return { name, id: Math.floor(Math.random() * 100) };
+        return { name, id: uniqueId() };
     };
 
     removeUser = async user => {

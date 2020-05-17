@@ -5,7 +5,7 @@ import Routes from 'views/Routes';
 
 const BASE_CLASS = 'sidebar';
 
-const Sidebar = () => {
+export default function Sidebar() {
     const [open, toggle] = useReducer(s => !s, true);
 
     return (
@@ -32,6 +32,4 @@ const Sidebar = () => {
             </nav>
         </aside>
     );
-};
-
-export default Sidebar;
+}

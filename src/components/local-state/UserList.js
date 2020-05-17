@@ -6,7 +6,7 @@ import Input from 'components/common/Input';
 import Button from 'components/common/Button';
 import { useUsers } from './useUsers';
 
-export default function LocalState() {
+export default function UserList() {
     const { add, remove, ...state } = useUsers();
 
     if (state.isLoading || !state.hasLoaded) return <Loader />;
@@ -22,21 +22,19 @@ export default function LocalState() {
                 ))}
             </List>
 
-            <Input disabled={state.isAddingUser}>
+            <Input disabled={state.isAdding}>
                 {name => (
-                    <Button
-                        disabled={state.isAddingUser}
-                        onClick={() => add(name)}>
+                    <Button disabled={state.isAdding} onClick={() => add(name)}>
                         Add user
                     </Button>
                 )}
             </Input>
 
-            {state.isRemovingUser && <Loader>Removing user...</Loader>}
-            {state.userRemovingError && <Error>Failed to remove user</Error>}
+            {state.isRemoving && <Loader>Removing user...</Loader>}
+            {state.errorRemoving && <Error>Failed to remove user</Error>}
 
-            {state.isAddingUser && <Loader>Adding user...</Loader>}
-            {state.userAddingError && <Error>Failed to add user</Error>}
+            {state.isAdding && <Loader>Adding user...</Loader>}
+            {state.errorAdding && <Error>Failed to add user</Error>}
         </>
     );
 }

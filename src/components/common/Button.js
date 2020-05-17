@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { colorWhite, colorGrey } from 'constants/style-variables';
 
-const Button = styled.button`
+export default styled.button`
     cursor: pointer;
     color: ${colorWhite};
     background-color: rgba(20, 100, 150, 1);
@@ -27,5 +27,3 @@ const Button = styled.button`
         color: ${colorGrey};
     }
 `;
-
-export default Button;

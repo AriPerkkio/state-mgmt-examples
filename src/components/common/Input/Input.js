@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const Input = styled.input`
+const StyledInput = styled.input`
     margin-right: 1rem;
     &[disabled] {
         text-decoration: line-through;
     }
 `;
 
-export default ({ children, disabled, ...props }) => {
+export default function Input({ children, disabled, ...props }) {
     const [value, setValue] = useState('');
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export default ({ children, disabled, ...props }) => {
 
     return (
         <div>
-            <Input
+            <StyledInput
                 type='text'
                 disabled={disabled}
                 value={value}
@@ -28,4 +28,4 @@ export default ({ children, disabled, ...props }) => {
             {children(value)}
         </div>
     );
-};
+}

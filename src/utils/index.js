@@ -5,3 +5,8 @@ export const filterUnique = (item, index, array) => {
 };
 
 export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+let counter = 10;
+export const uniqueId = () => counter++;
+
+export const noop = () => {};
