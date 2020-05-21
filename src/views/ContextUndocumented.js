@@ -1,1 +1,0 @@
-export default () => 'ContextUndocumented view'

@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Routes from 'views/Routes';
 import Sidebar from 'components/common/Sidebar';
@@ -16,6 +16,8 @@ const App = () => (
                             {Routes.map(props => (
                                 <Route key={props.path} {...props} />
                             ))}
+
+                            <Redirect to={Routes[0].path} />
                         </Switch>
                     </Suspense>
                 </section>

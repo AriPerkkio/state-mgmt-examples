@@ -1,17 +1,20 @@
 import { lazy } from 'react';
 
-import LocalState from './LocalState';
-
 export default [
+    {
+        navigationName: 'Local State',
+        path: '/local-state',
+        component: lazy(() => import('./LocalState')),
+    },
     {
         navigationName: 'Context',
         path: '/context',
         component: lazy(() => import('./Context')),
     },
     {
-        navigationName: 'Context Undocumented',
-        path: '/context-undocumented',
-        component: lazy(() => import('./ContextUndocumented')),
+        navigationName: 'Context with Observed Bits',
+        path: '/context-with-observed-bits',
+        component: lazy(() => import('./ContextWithObservedBits')),
     },
     {
         navigationName: 'Kea',
@@ -34,8 +37,18 @@ export default [
         component: lazy(() => import('./Redux')),
     },
     {
-        navigationName: 'Local State',
-        path: '/*',
-        component: LocalState,
+        navigationName: 'Redux Thunk',
+        path: '/redux-thunk',
+        component: () => 'Redux Thunk',
+    },
+    {
+        navigationName: 'Redux Saga',
+        path: '/redux-saga',
+        component: () => 'Redux Saga',
+    },
+    {
+        navigationName: 'XState',
+        path: '/xstate',
+        component: () => 'Xstate',
     },
 ];
