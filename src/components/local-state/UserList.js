@@ -5,8 +5,10 @@ import { List, ListItem } from 'components/common/List';
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
 import { useUsers } from './useUsers';
+import { useRenderTracking } from 'hooks';
 
 export default function UserList() {
+    useRenderTracking('UserList');
     const { add, remove, ...state } = useUsers();
 
     if (state.isLoading || !state.hasLoaded) return <Loader />;

@@ -17,16 +17,6 @@ export default [
         component: lazy(() => import('./ContextWithObservedBits')),
     },
     {
-        navigationName: 'Kea',
-        path: '/kea',
-        component: lazy(() => import('./Kea')),
-    },
-    {
-        navigationName: 'Mobx',
-        path: '/mobx',
-        component: lazy(() => import('./Mobx')),
-    },
-    {
         navigationName: 'Recoil',
         path: '/recoil',
         component: lazy(() => import('./Recoil')),
@@ -50,5 +40,15 @@ export default [
         navigationName: 'XState',
         path: '/xstate',
         component: () => 'Xstate',
+    },
+    {
+        navigationName: 'Mobx',
+        path: '/mobx',
+        component: lazy(() => import('./Mobx')),
+    },
+    {
+        navigationName: 'Kea',
+        path: '/kea',
+        component: lazy(() => import('./Kea')),
     },
 ];

@@ -38,7 +38,10 @@ export function useUsers() {
 
         Api.getUsers()
             .then(users => dispatch({ ...ON_SUCCESS, users }))
-            .catch(() => dispatch(ON_ERROR));
+            .catch(e => {
+                console.error(e);
+                dispatch(ON_ERROR);
+            });
     }, []);
 
     return {

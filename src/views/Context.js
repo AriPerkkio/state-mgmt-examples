@@ -3,6 +3,9 @@ import React from 'react';
 import UserList from 'components/context';
 import { H1 } from 'components/common/Text';
 import { CodeBlockButton } from 'components/common/CodeBlock';
+import RenderingList from 'components/common/RenderingList';
+import MountToggle from 'components/common/MountToggle';
+import { FlexContainer } from 'components/common/Containers';
 import { ApiRequests } from 'api';
 
 export default function ContextView() {
@@ -50,9 +53,16 @@ export default function ContextView() {
                 text='UsersWrapper.js'
                 fileName='components/context/UsersWrapper.js'
             />
+            <br />
 
-            <UserList />
-            <ApiRequests />
+            <MountToggle>
+                <UserList />
+            </MountToggle>
+
+            <FlexContainer>
+                <RenderingList />
+                <ApiRequests />
+            </FlexContainer>
         </>
     );
 }

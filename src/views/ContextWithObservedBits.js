@@ -18,19 +18,6 @@ export default function ContextObservedBitsView() {
                 text='UserContext.js'
                 fileName='components/context-observed-bits/UserContext.js'
             />
-            <CodeBlockButton
-                text='useUsers.js'
-                fileName='components/context-observed-bits/useUsers.js'
-            />
-            <CodeBlockButton
-                text='useUserMethods.js'
-                fileName='components/context-observed-bits/useUserMethods.js'
-            />
-            <CodeBlockButton
-                text='reducer.js'
-                fileName='components/context-observed-bits/reducer.js'
-            />
-            <br />
 
             <CodeBlockButton
                 text='UserInput.js'
@@ -44,11 +31,11 @@ export default function ContextObservedBitsView() {
                 text='UserIndicators.js'
                 fileName='components/context-observed-bits/UserIndicators.js'
             />
+            <br />
             <CodeBlockButton
                 text='UserList.js'
                 fileName='components/context-observed-bits/UserList.js'
             />
-            <br />
 
             <CodeBlockButton
                 text='UsersWrapper.js'

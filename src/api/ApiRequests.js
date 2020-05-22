@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useReducer, useEffect } from 'react';
 
 import Api from './Api';
 import { H3 } from 'components/common/Text';
 import { List, ListItem } from 'components/common/List';
-import { useForceRender } from 'hooks';
 
 const MAX_LIST_COUNT = 10;
 
 export default function ApiRequests() {
-    useForceRender(500);
+    const [, forceRender] = useReducer(s => s + 1, 0);
+
+    useEffect(() => {
+        Api.subscribe(forceRender);
+        return () => Api.unSubscribe(forceRender);
+    }, []);
 
     const count = Api.requests.length;
     const displayCount = count > MAX_LIST_COUNT ? count - MAX_LIST_COUNT : 0;
 
     return (
         <section>
-            <H3
-                onClick={() => (Api.requests = [])}
-                style={{ cursor: 'pointer' }}>
+            <H3 onClick={Api.clearRequests} style={{ cursor: 'pointer' }}>
                 API requests, click to reset
             </H3>
+
             <List>
                 {count > MAX_LIST_COUNT && <ListItem>...</ListItem>}
                 {Api.requests.slice(displayCount).map((url, key) => (

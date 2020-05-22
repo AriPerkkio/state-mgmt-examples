@@ -2,8 +2,11 @@ import React from 'react';
 
 import UserList from 'components/local-state';
 import { H1 } from 'components/common/Text';
-import { ApiRequests } from 'api';
 import { CodeBlockButton } from 'components/common/CodeBlock';
+import RenderingList from 'components/common/RenderingList';
+import { FlexContainer } from 'components/common/Containers';
+import { ApiRequests } from 'api';
+import MountToggle from 'components/common/MountToggle';
 
 export default function LocalStateView() {
     return (
@@ -22,9 +25,16 @@ export default function LocalStateView() {
                 text='UserList.js'
                 fileName='components/local-state/UserList.js'
             />
+            <br />
 
-            <UserList />
-            <ApiRequests />
+            <MountToggle>
+                <UserList />
+            </MountToggle>
+
+            <FlexContainer>
+                <RenderingList />
+                <ApiRequests />
+            </FlexContainer>
         </>
     );
 }

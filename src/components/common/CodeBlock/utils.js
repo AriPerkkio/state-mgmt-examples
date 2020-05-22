@@ -10,9 +10,14 @@ const REGEX_NEWLINE_INDENT = /\n( ){4}/g;
 const REGEX_CLOSING_BRACKET = /\);/g;
 const REGEX_PRETTIER_IGNORE = /\n\s*\/\/ prettier-ignore/g;
 const REGEX_ESLINT_IGNORE = /\n\s*\/\/ eslint-disable-next-line/g;
-const REGEX_DOUBLE_NEWLINES = /\n\n\n/g;
+const REGEX_WHITE_SPACE_ROWS = /\n((?:( ){1,})(?!\S))\n/g;
+const REGEX_DOUBLE_NEWLINES = /(\n){3,}/g;
 const REGEX_POST_NEWLINE = /\n\n\);/g;
-const REGEX_HIDE_LINE = /( |\S)*\/\/ hide-line([\S ]*)\n/g;
+const REGEX_HiDDEN_LINE = /( |\S)*\/\/ code-block-hidden([\S ]*)\n/g;
+const REGEX_HIDDEN_BLOCK = /( )*\/\* code-block-hidden start \*\/(\s|\S).*?\/\* code-block-hidden end \*\//gs;
+const REGEX_RENDER_TRACKING = /( )*useRenderTracking\(.*\);\n/g;
+const REGEX_RENDER_TRACKING_IMPORT = /useRenderTracking/g;
+const REGEX_EMPTY_HOOKS_IMPORT = /import \{\s*\} from 'hooks';\n/;
 
 const removePrettierAndEslintIgnoreComments = code =>
     code.replace(REGEX_PRETTIER_IGNORE, '\n').replace(REGEX_ESLINT_IGNORE, '');
@@ -44,9 +49,19 @@ const removeEmptyDivs = code => code.replace(REGEX_EMPTY_DIV, '');
 const removeDoubleNewlines = code =>
     code
         .replace(REGEX_DOUBLE_NEWLINES, '\n\n')
-        .replace(REGEX_POST_NEWLINE, '\n);');
+        .replace(REGEX_POST_NEWLINE, '\n);')
+        .replace(REGEX_DOUBLE_NEWLINES, '\n')
+        .replace(REGEX_WHITE_SPACE_ROWS, '\n');
 
-const removeHiddenLines = code => code.replace(REGEX_HIDE_LINE, '');
+const removeHiddenLines = code =>
+    code.replace(REGEX_HiDDEN_LINE, '').replace(REGEX_HIDDEN_BLOCK, '');
+
+const removeCommonHooks = code =>
+    code
+        .replace(REGEX_RENDER_TRACKING_IMPORT, '')
+        .replace(REGEX_EMPTY_HOOKS_IMPORT, '');
+
+const removeRenderTracking = code => code.replace(REGEX_RENDER_TRACKING, '');
 
 const formatCodes = (codes, options) => {
     const formatters = [
@@ -55,10 +70,12 @@ const formatCodes = (codes, options) => {
         decreaseIndent(options.indent),
         options.hideCommonImports && removeCommonImports,
         removeMountToggle,
+        removeRenderTracking,
+        removeCommonHooks,
         removePrettierAndEslintIgnoreComments,
         removeEmptyDivs,
-        removeDoubleNewlines,
         removeHiddenLines,
+        removeDoubleNewlines,
     ].filter(Boolean);
 
     const format = code =>

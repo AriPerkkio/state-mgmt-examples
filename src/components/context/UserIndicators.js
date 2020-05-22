@@ -2,8 +2,10 @@ import React from 'react';
 
 import { useUsers } from './useUsers';
 import { Loader, Error } from 'components/common/Indicators';
+import { useRenderTracking } from 'hooks';
 
 export default function UserIndicators() {
+    useRenderTracking('UserIndicators');
     const { isRemoving, errorRemoving, isAdding, errorAdding } = useUsers();
 
     return (

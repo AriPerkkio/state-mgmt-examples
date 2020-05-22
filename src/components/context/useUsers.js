@@ -4,11 +4,11 @@ import Api from 'api';
 import { UserStateContext, UserDispatchContext } from './UserContext';
 import { ON_LOAD, ON_SUCCESS, ON_ERROR } from './reducer';
 
-export function useUsers() {
+export function useUsers(_shouldFetch) {
     const state = useContext(UserStateContext);
     const dispatch = useContext(UserDispatchContext);
 
-    const shouldFetch = !state.isLoading && !state.hasLoaded;
+    const shouldFetch = _shouldFetch && !state.isLoading && !state.hasLoaded;
 
     useEffect(() => {
         if (shouldFetch) {

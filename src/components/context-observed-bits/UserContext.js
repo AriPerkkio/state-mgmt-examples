@@ -8,7 +8,7 @@ const MASK = 0b111;
 export const LOADING_MASK = 0b001;
 export const ADDING_MASK = 0b010;
 export const INDICATORS_MASK = 0b100;
-window.UserContextChangedBits = '000';
+window.UserContextChangedBits = '000'; // code-block-hidden
 
 function calculateChangedBits(prev, next) {
     const loadingChanged =
@@ -32,9 +32,11 @@ function calculateChangedBits(prev, next) {
         (indicatorsChanged && INDICATORS_MASK) &
         MASK;
 
+    /* code-block-hidden start */
     const padded = '000' + changedBits.toString('2');
     const formattedBits = padded.substr(padded.length - 3, 3);
     window.UserContextChangedBits = formattedBits;
+    /* code-block-hidden end */
 
     return changedBits;
 }
@@ -54,6 +56,7 @@ export const UserProvider = ({ children }) => {
     );
 };
 
+/* code-block-hidden start */
 const consoleerror = console.error;
 function onError(message, ...args) {
     if (/useContext\(\) second argument is reserved/.test(message)) return;
@@ -61,3 +64,4 @@ function onError(message, ...args) {
     return consoleerror(message, ...args);
 }
 console.error = onError;
+/* code-block-hidden end */

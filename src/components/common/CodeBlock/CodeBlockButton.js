@@ -7,7 +7,7 @@ import Button from 'components/common/Button';
 const USE_LOCAL_SOURCE_CODES = true && process.env.NODE_ENV === 'development';
 const URL = USE_LOCAL_SOURCE_CODES
     ? '/source-code'
-    : 'https://raw.githubusercontent.com/AriPerkkio/suspense-examples/master/src';
+    : 'https://raw.githubusercontent.com/AriPerkkio/state-mgmt-examples/master/src';
 
 const CodeBlockButton = ({ fileName, text, className }) => {
     const [code, setCode] = useState();
