@@ -1,1 +1,1 @@
-export default () => 'Recoil';
+export { default } from './UsersWrapper';
