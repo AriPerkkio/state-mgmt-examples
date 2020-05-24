@@ -12,7 +12,10 @@ export default function RenderingList() {
     useEffect(() => {
         RenderStore.subscribe(forceRender);
 
-        return () => RenderStore.unSubscribe(forceRender);
+        return () => {
+            RenderStore.unSubscribe(forceRender);
+            RenderStore.clearRenders();
+        };
     }, []);
 
     const renderers = RenderStore.getRenders();

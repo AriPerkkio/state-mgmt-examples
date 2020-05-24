@@ -11,7 +11,10 @@ export default function ApiRequests() {
 
     useEffect(() => {
         Api.subscribe(forceRender);
-        return () => Api.unSubscribe(forceRender);
+        return () => {
+            Api.unSubscribe(forceRender);
+            Api.clearRequests();
+        };
     }, []);
 
     const count = Api.requests.length;

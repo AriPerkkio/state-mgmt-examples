@@ -1,16 +1,16 @@
-export const ON_LOAD = { type: 'ON_LOAD' };
-export const ON_SUCCESS = { type: 'ON_SUCCESS' };
-export const ON_ERROR = { type: 'ON_ERROR' };
+import {
+    ON_USERS_LOAD_START,
+    ON_USERS_LOAD_SUCCESS,
+    ON_USERS_LOAD_ERROR,
+    ON_USER_ADD_START,
+    ON_USER_ADD_SUCCESS,
+    ON_USER_ADD_ERROR,
+    ON_USER_REMOVE_START,
+    ON_USER_REMOVE_SUCCESS,
+    ON_USER_REMOVE_ERROR,
+} from './actions';
 
-export const ON_ADD_START = { type: 'ON_ADD_START' };
-export const ON_ADD_SUCCESS = { type: 'ON_ADD_SUCCESS' };
-export const ON_ADD_ERROR = { type: 'ON_ADD_ERROR' };
-
-export const ON_REMOVE_START = { type: 'ON_REMOVE_START' };
-export const ON_REMOVE_SUCCESS = { type: 'ON_REMOVE_SUCCESS' };
-export const ON_REMOVE_ERROR = { type: 'ON_REMOVE_ERROR' };
-
-export const initialState = {
+const initialState = {
     users: [],
     isLoading: false,
     hasLoaded: false,
@@ -25,65 +25,65 @@ export const initialState = {
     errorRemoving: false,
 };
 
-export default function reducer(state, action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case ON_LOAD.type:
+        case ON_USERS_LOAD_START:
             return {
                 ...state,
                 isLoading: true,
                 hasLoaded: true,
             };
 
-        case ON_SUCCESS.type:
+        case ON_USERS_LOAD_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
                 users: action.users,
             };
 
-        case ON_ERROR.type:
+        case ON_USERS_LOAD_ERROR:
             return {
                 ...state,
                 isLoading: false,
                 error: true,
             };
 
-        case ON_ADD_START.type:
+        case ON_USER_ADD_START:
             return {
                 ...state,
                 isAdding: true,
                 errorAdding: false,
             };
 
-        case ON_ADD_SUCCESS.type:
+        case ON_USER_ADD_SUCCESS:
             return {
                 ...state,
                 isAdding: false,
                 users: [...state.users, action.user],
             };
 
-        case ON_ADD_ERROR.type:
+        case ON_USER_ADD_ERROR:
             return {
                 ...state,
                 isAdding: false,
                 errorAdding: true,
             };
 
-        case ON_REMOVE_START.type:
+        case ON_USER_REMOVE_START:
             return {
                 ...state,
                 isRemoving: true,
                 errorRemoving: false,
             };
 
-        case ON_REMOVE_SUCCESS.type:
+        case ON_USER_REMOVE_SUCCESS:
             return {
                 ...state,
                 users: state.users.filter(_user => _user.id !== action.user.id),
                 isRemoving: false,
             };
 
-        case ON_REMOVE_ERROR:
+        case ON_USER_REMOVE_ERROR:
             return {
                 ...state,
                 isRemoving: false,

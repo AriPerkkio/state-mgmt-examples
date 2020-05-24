@@ -1,1 +1,1 @@
-export default () => 'Redux';
+export { default } from './UsersWrapper';

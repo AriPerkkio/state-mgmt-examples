@@ -18,7 +18,7 @@ const userRemove = selector({
     },
 });
 
-export default function UserItem({ name, id }) {
+export default React.memo(function UserItem({ name, id }) {
     useRenderTracking(`UserItem: (${name})`);
     const dispatch = useSetRecoilState(userRemove);
 
@@ -31,4 +31,4 @@ export default function UserItem({ name, id }) {
     };
 
     return <ListItem onRemove={() => remove({ id })}>{name}</ListItem>;
-}
+});

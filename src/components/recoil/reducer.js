@@ -83,7 +83,7 @@ export default function reducer(state, action) {
                 isRemoving: false,
             };
 
-        case ON_REMOVE_SUCCESS:
+        case ON_REMOVE_ERROR:
             return {
                 ...state,
                 isRemoving: false,
