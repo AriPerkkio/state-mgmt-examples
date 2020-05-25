@@ -18,7 +18,6 @@ function UserList({
     setUsersError,
 }) {
     useRenderTracking('UserList');
-
     useEffect(() => {
         if (shouldFetch) {
             setLoading();

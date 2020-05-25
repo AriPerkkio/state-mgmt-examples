@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import { colorWhite, colorGrey } from 'constants/style-variables';
@@ -27,3 +28,34 @@ export default styled.button`
         color: ${colorGrey};
     }
 `;
+
+const Grid = styled.ul`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 50rem;
+
+    list-style: none;
+
+    li {
+        flex: 1 1 auto;
+        padding: 0 0.5rem;
+    }
+
+    button {
+        width: 100%;
+        margin: 0.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 0.1rem 0.5rem black;
+    }
+`;
+
+export function ButtonGrid({ children }) {
+    return (
+        <Grid>
+            {React.Children.toArray(children).map((child, index) => (
+                <li key={index}>{child}</li>
+            ))}
+        </Grid>
+    );
+}

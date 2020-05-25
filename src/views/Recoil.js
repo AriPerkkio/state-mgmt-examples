@@ -3,6 +3,7 @@ import React from 'react';
 import UserList from 'components/recoil';
 import RenderingList from 'components/common/RenderingList';
 import { H1, BodyText } from 'components/common/Text';
+import { ButtonGrid } from 'components/common/Button';
 import MountToggle from 'components/common/MountToggle';
 import { CodeBlockButton } from 'components/common/CodeBlock';
 import { FlexContainer } from 'components/common/Containers';
@@ -12,29 +13,30 @@ export default function RecoilView() {
     return (
         <>
             <H1>Recoil</H1>
-            <CodeBlockButton
-                text='UserState.js'
-                fileName='components/recoil/UserState.js'
-            />
-            <CodeBlockButton
-                text='UsersWrapper.js'
-                fileName='components/recoil/UsersWrapper.js'
-            />
-            <CodeBlockButton
-                text='UserList.js'
-                fileName='components/recoil/UserList.js'
-            />
-            <br />
-            <CodeBlockButton
-                text='UserInput.js'
-                fileName='components/recoil/UserInput.js'
-            />
-            <CodeBlockButton
-                text='UserIndicators.js'
-                fileName='components/recoil/UserIndicators.js'
-            />
 
-            <br />
+            <ButtonGrid>
+                <CodeBlockButton
+                    text='UserState.js'
+                    fileName='components/recoil/UserState.js'
+                />
+                <CodeBlockButton
+                    text='UsersWrapper.js'
+                    fileName='components/recoil/UsersWrapper.js'
+                />
+                <CodeBlockButton
+                    text='UserList.js'
+                    fileName='components/recoil/UserList.js'
+                />
+                <CodeBlockButton
+                    text='UserInput.js'
+                    fileName='components/recoil/UserInput.js'
+                />
+                <CodeBlockButton
+                    text='UserIndicators.js'
+                    fileName='components/recoil/UserIndicators.js'
+                />
+            </ButtonGrid>
+
             <MountToggle>
                 <UserList />
             </MountToggle>
