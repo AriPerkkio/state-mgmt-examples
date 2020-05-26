@@ -29,7 +29,7 @@ export default [
     {
         navigationName: 'Redux Thunk',
         path: '/redux-thunk',
-        component: () => 'Redux Thunk',
+        component: lazy(() => import('./ReduxThunk')),
     },
     {
         navigationName: 'Redux Saga',
