@@ -34,7 +34,7 @@ export default [
     {
         navigationName: 'Redux Saga',
         path: '/redux-saga',
-        component: () => 'Redux Saga',
+        component: lazy(() => import('./ReduxSaga')),
     },
     {
         navigationName: 'XState',
