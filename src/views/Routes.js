@@ -39,7 +39,7 @@ export default [
     {
         navigationName: 'XState',
         path: '/xstate',
-        component: () => 'Xstate',
+        component: lazy(() => import('./XState')),
     },
     {
         navigationName: 'Mobx',
