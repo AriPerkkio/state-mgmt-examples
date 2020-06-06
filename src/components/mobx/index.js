@@ -1,1 +1,1 @@
-export default () => 'Mobx';
+export { default } from './UsersWrapper';
