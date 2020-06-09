@@ -1,1 +1,1 @@
-export default () => 'Kea';
+export { default } from './UsersWrapper';

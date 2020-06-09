@@ -37,6 +37,11 @@ export default [
         component: lazy(() => import('./ReduxSaga')),
     },
     {
+        navigationName: 'Redux Toolkit',
+        path: '/redux-toolkit',
+        component: lazy(() => import('./ReduxToolkit')),
+    },
+    {
         navigationName: 'XState',
         path: '/xstate',
         component: lazy(() => import('./XState')),
