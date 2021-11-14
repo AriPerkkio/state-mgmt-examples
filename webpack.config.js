@@ -32,8 +32,7 @@ module.exports = (_, argv) => {
                 inject: true,
                 template: getPath('public/index.html'),
             }),
-            !isProduction &&
-                new ReactRefreshWebpackPlugin({ disableRefreshCheck: true }),
+            !isProduction && new ReactRefreshWebpackPlugin(),
             isProduction &&
                 new MiniCssExtractPlugin({
                     filename: 'static/css/[name].[contenthash:8].css',
@@ -57,20 +56,26 @@ module.exports = (_, argv) => {
                     test: /\.(js|jsx)$/,
                     exclude: /node_modules/,
                     loader: 'babel-loader',
-                    options: { envName: 'process.env.NODE_ENV' },
+                    options: {
+                        plugins: [require('react-refresh/babel')],
+                    },
                 },
             ],
         },
         devServer: {
             port: 3000,
-            overlay: true,
-            contentBase: './public',
-            disableHostCheck: true,
-            noInfo: true,
-            clientLogLevel: 'error',
-            before: app => {
+            static: {
+                directory: path.join(__dirname, 'public'),
+                watch: true,
+            },
+            allowedHosts: 'all',
+            client: {
+                logging: 'error',
+                overlay: true,
+            },
+            onBeforeSetupMiddleware: devServer => {
                 // In development mode, proxy source-code requests to local files
-                app.get('/source-code/**', (req, res) => {
+                devServer.app.get('/source-code/**', (req, res) => {
                     const fileName = req.path.replace('/source-code', '');
                     console.log(`Reading ${fileName}`);
 
