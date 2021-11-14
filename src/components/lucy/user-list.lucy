@@ -1,0 +1,16 @@
+use 'api' { getUsers }
+
+state idle {}
+
+initial state notLoaded {
+    load => loading
+}
+
+state loading {
+    invoke(:getUsers) {
+        done => assign(users) => idle
+        error => loadError
+    }
+}
+
+state loadError {}
