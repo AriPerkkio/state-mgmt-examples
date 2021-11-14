@@ -13,5 +13,6 @@ Collection of different react state management libraries with examples. Point of
 -   [Redux Saga](https://ariperkkio.github.io/state-mgmt-examples/#/redux-saga)
 -   [Redux Toolkit](https://ariperkkio.github.io/state-mgmt-examples/#/redux-toolkit)
 -   [XState](https://ariperkkio.github.io/state-mgmt-examples/#/xstate)
+-   [Lucy DSL](https://ariperkkio.github.io/state-mgmt-examples/#/lucy)
 -   [Mobx](https://ariperkkio.github.io/state-mgmt-examples/#/mobx)
 -   [Kea](https://ariperkkio.github.io/state-mgmt-examples/#/kea)

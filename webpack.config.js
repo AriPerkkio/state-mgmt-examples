@@ -57,8 +57,21 @@ module.exports = (_, argv) => {
                     exclude: /node_modules/,
                     loader: 'babel-loader',
                     options: {
-                        plugins: [require('react-refresh/babel')],
+                        envName: argv.mode,
+                        plugins: [
+                            !isProduction && require('react-refresh/babel'),
+                        ].filter(Boolean),
                     },
+                },
+                {
+                    test: /\.lucy$/,
+                    use: [
+                        {
+                            loader: path.resolve(
+                                './webpack-loaders/lucy-loader.js'
+                            ),
+                        },
+                    ],
                 },
             ],
         },

@@ -83,4 +83,8 @@ class Api {
     }
 }
 
-export default new Api();
+const Instance = new Api();
+export default Instance;
+
+// Additional exports for lucy dsl
+export const getUsers = Instance.getUsers;

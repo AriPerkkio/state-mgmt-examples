@@ -56,4 +56,9 @@ export default [
         path: '/kea',
         component: lazy(() => import('./Kea')),
     },
+    {
+        navigationName: 'Lucy',
+        path: '/lucy',
+        component: lazy(() => import('./Lucy')),
+    },
 ];
